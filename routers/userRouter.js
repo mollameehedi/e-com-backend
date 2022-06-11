@@ -1,11 +1,11 @@
-const router = express('express').Router();
+const router = require('express').Router();
 const {singIn, singUp} =  require('../controllers/userControllers');
 
-router.router('/signup')
+router.route('/signup')
     .post(singUp);
 
-router.router('/signin')
-    post(singIn);
+router.route('/signin')
+    .post(singIn);
 
 
 module.exports = router;

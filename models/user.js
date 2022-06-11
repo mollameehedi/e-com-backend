@@ -1,7 +1,6 @@
 const {Schema, model} = require('mongoose');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
-const { string } = require('joi');
 
 const userSchema = Schema ({
     name:{
@@ -41,7 +40,7 @@ userSchema.methods.generateJWT = function(){
 }
 
 const validateUser = user =>{
-    const shcema = Joi.object({
+    const schema = Joi.object({
         name:Joi.string().min(3).max(100).required(),
         email:Joi.string().min(5).max(255).required(),
         password:Joi.string().min(5).max(255).required(),
