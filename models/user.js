@@ -1,10 +1,6 @@
 const {Schema, model} = require('mongoose');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
-<<<<<<< HEAD
-const { string } = require('joi');
-=======
->>>>>>> testing
 
 const userSchema = Schema ({
     name:{
