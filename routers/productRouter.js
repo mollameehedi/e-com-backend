@@ -10,9 +10,9 @@ const authorize = require('../middlewares/authorize');
 
 router.route('/')
       .post([authorize,admin], createProduct)
-      .get(getProducts)
+      .get(getProducts);
 router.route('/:id')
        .get(getProductById)
-       .put(updateProductById)
+       .put(updateProductById);
 
 module.exports = router;
