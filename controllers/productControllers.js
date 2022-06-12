@@ -34,9 +34,19 @@ module.exports.createProduct = async (req,res) =>{
 
 }
 
+// Query Parameter
+// api /product?order=desc&sortBy=name&limit=10
+
 module.exports.getProducts = async (req,res) =>{
+    console.log(req.query);
+    let order = req.query.order === 'desc' ? -1:1;
+    let sortBy = req.query.sortBy ? req.query.sortBy: '_id';
+    let limit = req.query.limit ? parseInt(req.query.limit): 10;
     const products = await Product.find()
-           .select({ photo:0 });
+          .select({ photo:0,description:0 })
+          .populate('category','name')
+          .sort({[sortBy]:order})
+          .limit(limit);
     return res.status(200).send(products)
 }
 
