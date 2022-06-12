@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
     createProduct,
     getProducts, 
+    getPhoto,
     getProductById, 
     updateProductById
 } = require('../controllers/productControllers');
@@ -13,6 +14,8 @@ router.route('/')
       .get(getProducts);
 router.route('/:id')
        .get(getProductById)
-       .put(updateProductById);
+       .put([authorize,admin],updateProductById);
+router.route('/photo/:id')
+      .get(getPhoto); 
 
 module.exports = router;
