@@ -1,13 +1,61 @@
-import React from 'react'
-import Layout from '../Layout'
+import { useState } from 'react';
+import Layout from '../Layout';
+import { showError, showSuccess } from '../../utils/messages';
 
 const Register = () => {
-  return (
-    <Layout title='Register' className='container col-md-8 offset-md-2'>
-        <h3>Register Here,</h3>
-        <hr/>
-    </Layout>
-  )
+    const [values, setValues] = useState({
+        name: '',
+        email: '',
+        password: '',
+        error: false,
+        loading: false,
+        disabled: false,
+        success: false
+    });
+
+    const { name, email, password, success, error, loading, disabled } = values;
+
+const handleChange = e =>{
+    setValues({
+        ...values,
+        error:false,
+        [e.target.name]:e.target.value
+    })
+}
+const handleSubmit = e =>{
+    e.preventDefault();
+    alert(JSON.stringify(values));
 }
 
-export default Register
+    const signUpForm = () => (
+        <form onSubmit={handleSubmit}>
+            <div className="form-group">
+                <label className="text-muted">Name:</label>
+                <input type="text" name="name" className="form-control"
+                    value={name} onChange={handleChange} />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Email:</label>
+                <input type="email" name="email" className="form-control"
+                    value={email} onChange={handleChange}/>
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Password:</label>
+                <input type="password" name="password" className="form-control"
+                    value={password} onChange={handleChange}/>
+            </div>
+            <button type="submit" className="btn btn-primary" disabled={disabled}>Create Account</button>
+        </form>
+    );
+
+    return (
+        <Layout title="Register" className="container col-md-8 offset-md-2">
+            <h3>Register Here,</h3>
+            <hr />
+            {signUpForm()}
+            <hr />
+        </Layout>
+    );
+}
+
+export default Register;
