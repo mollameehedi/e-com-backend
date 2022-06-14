@@ -1,4 +1,5 @@
 import React,{ useEffect } from 'react'
+import Menu from './Menu';
 
 const Layout = ({title = "Title",className,children}) => {
     useEffect(() =>{
@@ -7,7 +8,7 @@ const Layout = ({title = "Title",className,children}) => {
   return (
     <div>
         <div className='md-3'>
-            <h3>Menu</h3>
+            <Menu/>
         </div>
         <div className={className}>{children}</div>
     </div>
