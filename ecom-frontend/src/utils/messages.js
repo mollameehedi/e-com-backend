@@ -9,3 +9,5 @@ export const showSuccess = (success, msg) =>{
 export const showLoading = loading =>{
     if (loading) return <div className="alert alert-info">Loading....</div>
 }
+
+// login and register part 2

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Layout from '../Layout';
-import { showError, showSuccess } from '../../utils/messages';
+import { showError, showLoading} from '../../utils/messages';
+import {register} from '../../api/apiAuth';
+import {Link} from 'react-router-dom';
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -24,7 +26,32 @@ const handleChange = e =>{
 }
 const handleSubmit = e =>{
     e.preventDefault();
-    alert(JSON.stringify(values));
+    setValues({
+        ...values,
+        error:false,
+        loading:true,
+        disabled:true, 
+        });
+        register({name,email,password})
+        .then(response =>{
+            setValues({
+                name: '',
+                email: '',
+                password: '',
+                success:true,
+                disabled:false,
+                loading:false,
+            })
+        })
+        .catch(err =>{
+            let errMsg = 'Something went wrong!';
+            if (err.response) {
+                errMsg = err.response.data;
+            } else {
+                errMsg = 'Something went wrong!';
+            }
+            setValues({ ...values, error: errMsg, disabled: false, loading: false })
+        })
 }
 
     const signUpForm = () => (
@@ -48,8 +75,19 @@ const handleSubmit = e =>{
         </form>
     );
 
+    const showSuccess = () =>{
+      if (success)   return (
+            <div className='alert alert-primary'>
+                    New Account Created. Please <Link to='/login'>Login</Link>
+            </div>
+        )
+    }
     return (
         <Layout title="Register" className="container col-md-8 offset-md-2">
+            {showSuccess()}
+            {showLoading(loading)}
+            {showError(error,error)}
+
             <h3>Register Here,</h3>
             <hr />
             {signUpForm()}

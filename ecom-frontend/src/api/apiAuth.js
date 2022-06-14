@@ -1,9 +1,9 @@
 import axios from 'axios';
-import {API} from '../../utils/config';
+import {API} from '../utils/config';
 
 export const register = (user) =>{
-    return axios.post(`${API}/user/signup`,user,{
-        headers:{
+    return axios.post(`${API}/user/signup`, user, {
+        headers: {
             'Content-Type': 'application/json'
         }
     })
