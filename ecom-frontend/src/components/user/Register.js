@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Layout from '../Layout';
 import { showError, showLoading} from '../../utils/messages';
 import {register} from '../../api/apiAuth';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
+import {isAuthenticated} from '../../utils/auth'
 
 const Register = () => {
     const [values, setValues] = useState({
@@ -84,6 +85,7 @@ const handleSubmit = e =>{
     }
     return (
         <Layout title="Register" className="container col-md-8 offset-md-2">
+            { isAuthenticated() ? <Redirect to='/'/>:" " }
             {showSuccess()}
             {showLoading(loading)}
             {showError(error,error)}
