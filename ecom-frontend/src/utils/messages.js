@@ -3,7 +3,7 @@ export const showError = (error, msg) =>{
 }
 
 export const showSuccess = (success, msg) =>{
-    if (success) return <div className="alert alert-sucess">{ msg }</div>
+    if (success) return <div className="alert alert-success">{ msg }</div>
 }
 
 export const showLoading = loading =>{

@@ -1,5 +1,6 @@
 import { Link, withRouter } from 'react-router-dom';
 import { signout, isAuthenticated,userInfo } from '../utils/auth';
+import CreateCategory from './admin/CreateCategory';
 
 const isActive = (history, path) =>{
     if (history.location.pathname === path) {
