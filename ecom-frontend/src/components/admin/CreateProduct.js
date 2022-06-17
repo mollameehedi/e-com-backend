@@ -37,47 +37,32 @@ const CreateProduct = () => {
         disabled
     } = values;
 
-    useEffect(() =>{
+    useEffect(() => {
         getCategories()
-        .then(response =>{
+        .then(response => {
             setValues({
                 ...values,
-                categories:response.data,
+                categories: response.data,
                 formData: new FormData()
             })
         })
-        .catch(error =>{
+        .catch(error => {
             setValues({
                 ...values,
-                error:'Failed to load categories',
-                formData: new FormData(),
+                error: "Failed to load categories!",
+                formData: new FormData()
             })
         })
-    },[])
-    // useEffect(() => {
-    //     getCategory()
-    //     .then(response => {
-    //         setValues({
-    //             ...values,
-    //             categories: response.data,
-    //             formData: new FormData()
-    //         })
-    //     })
-    //     .catch(error => {
-    //         setValues({
-    //             ...values,
-    //             error: "Failed to load categories!",
-    //             formData: new FormData()
-    //         })
-    //     })
-    // }, [])
+    }, [])
     const handleChange = (e) => {
         const value = e.target.name === 'photo' ? e.target.files[0] : e.target.value;
 
         formData.set(e.target.name, value);
         setValues({
             ...values,
-            [e.target.name]: value
+            [e.target.name]: value,
+            error:false,
+            success:false,
 
         })
     }
@@ -92,6 +77,32 @@ const CreateProduct = () => {
             success: false
         })
         const {token} = userInfo();
+
+        createProduct(token,formData)
+        .then(response =>{
+            setValues({
+                name: '',
+                description: '',
+                price: '',
+                category: '',
+                quantity: '',
+                loading:false,
+                disabled:false,
+                success:true,
+                error:false,
+            })
+        })
+        .catch(error =>{
+            let errMsg = 'Something went Wrong!';
+            if(error.response) return errMsg = error.response.data;
+            setValues({
+                ...values,
+                error:errMsg,
+                loading:false,
+                success:false,
+                disabled:false,
+            })
+        })
         // createProduct(token, formData)
         // .then(response => {
         //     setValues({
