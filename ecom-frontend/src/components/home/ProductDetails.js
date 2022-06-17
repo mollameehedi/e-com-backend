@@ -15,7 +15,7 @@ const ProductDetails = (props) => {
         getProductDetails(id)
         .then(response => setProduct(response.data))
         .catch(err => setError('Failed to load Products'))
-    })
+    },[])
     return(
         <Layout title="Product Page">
              <nav aria-label="breadcrumb">
