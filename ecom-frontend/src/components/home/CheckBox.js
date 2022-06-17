@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 
 
-const CheckBox = ({categories}) =>{
+const CheckBox = ({categories,handleFilters}) =>{
     const [checked, setChecked] = useState([]);
     const checkedIds = [...checked];
 
@@ -11,14 +11,11 @@ const CheckBox = ({categories}) =>{
         if(foundId === -1){
             checkedIds.push(id);
         }else{
-            checked.splice(foundId,1);
+            checkedIds.splice(foundId,1);
         }
         setChecked(checkedIds);
+        handleFilters(checkedIds)
     }
-
-    useEffect(() =>{
-        alert(JSON.stringify(checked))
-    },[checked])
 
     return categories.map(category =>(
         <li className="list-unstyled" key={category._id}>
