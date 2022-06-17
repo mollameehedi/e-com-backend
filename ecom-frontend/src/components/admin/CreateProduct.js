@@ -103,32 +103,6 @@ const CreateProduct = () => {
                 disabled:false,
             })
         })
-        // createProduct(token, formData)
-        // .then(response => {
-        //     setValues({
-        //         ...values,
-        //         name: '',
-        //         description: '',
-        //         price: '',
-        //         category: '',
-        //         quantity: '',
-        //         loading: false,
-        //         disabled: false,
-        //         success: true,
-        //         error: false
-        //     })
-        // })
-        // .catch(error => {
-        //     let errMsg = "Something went wrong!";
-        //     if(error.response) errMsg = error.response.data;
-        //     setValues({
-        //         ...values,
-        //         error: errMsg,
-        //         loading: false,
-        //         success: false,
-        //         disabled: false
-        //     })
-        // })
     }
 
     const productForm = () => (
