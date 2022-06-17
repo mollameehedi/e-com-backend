@@ -11,4 +11,15 @@ export const createCategory = (token, data) =>{
 }
 
 
-// category create 5:00 minute
+export const createProduct = (token,data)=>{
+    return axios.post(`${API}/product`,data,{
+        headers:{
+            "Content-Type": "application/json",
+            'Authorization' : `Bearer ${token}`
+        }
+    })
+}
+
+export const getCategories = () =>{
+    return axios.get(`${API}/category`);
+}

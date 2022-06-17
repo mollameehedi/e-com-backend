@@ -7,6 +7,7 @@ import Dashboard from './user/Dashboard';
 import AdminRoute from './protectedRoutes/AdminRoute';
 import AdminDashboard from './admin/AdminDashboard';
 import CreateCategory from './admin/CreateCategory';
+import CreateProduct from './admin/CreateProduct';
 
 const Main = () => {
     return (
@@ -23,6 +24,9 @@ const Main = () => {
                 </AdminRoute>
                 <AdminRoute path='/create/category'>
                     <CreateCategory/>
+                </AdminRoute>
+                <AdminRoute path='/create/product'>
+                    <CreateProduct/>
                 </AdminRoute>
                 <Redirect to='/' />
         </Switch>
