@@ -18,7 +18,7 @@ module.exports.CreateCartItem = async (req,res) =>{
 }
 
 module.exports.getCartItem = async (req, res) =>{
-    const cartItems = await Cartitemfind({
+    const cartItems = await CartItem.find({
         user:req.user._id
     })
     .populate('product','name')
