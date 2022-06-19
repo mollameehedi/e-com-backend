@@ -10,6 +10,7 @@ import CreateCategory from './admin/CreateCategory';
 import CreateProduct from './admin/CreateProduct';
 import ProductDetails from './home/ProductDetails';
 import Cart from './order/Cart';
+import ShippingAddress from './order/ShippingAddress';
 
 const Main = () => {
     return (
@@ -19,12 +20,18 @@ const Main = () => {
                 <Route path='/login' exact component={Login}/>
                 <Route path='/register' exact component={Register}/>
                 <Route path='/product/:id' exact component={ProductDetails}/>
+
+                
                 <PrivateRoute path='/user/dashboard'>
                         <Dashboard/>
                 </PrivateRoute>
                 <PrivateRoute exact path="/cart">
                     <Cart />
                 </PrivateRoute>
+                <PrivateRoute exact path="/shipping">
+                    <ShippingAddress />
+                </PrivateRoute>
+
                 <AdminRoute path='/admin/dashboard'>
                     <AdminDashboard/>
                 </AdminRoute>
