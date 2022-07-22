@@ -43,6 +43,12 @@ const Login = () => {
                         loading:false,
                         redirect:true,
                     })
+                   { <Redirect
+                    to={{
+                      pathname: "/login",
+                      state: { from: location }
+                    }}
+                  />}
                 })
                 
             })

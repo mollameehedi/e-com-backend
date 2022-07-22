@@ -31,7 +31,7 @@ const Main = () => {
                 <PrivateRoute exact path="/shipping">
                     <ShippingAddress />
                 </PrivateRoute>
-
+        {/* admin router */}
                 <AdminRoute path='/admin/dashboard'>
                     <AdminDashboard/>
                 </AdminRoute>
